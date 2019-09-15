@@ -31,7 +31,7 @@ public class DroolConfig {
 
     @Bean
     @ConditionalOnMissingBean(KieFileSystem.class)
-    private KieFileSystem kieFileSystem() throws IOException {
+    public KieFileSystem kieFileSystem() throws IOException {
         KieFileSystem kieFileSystem = getKieServices().newKieFileSystem();
         for (Resource file : getRuleFiles()) {
             kieFileSystem.write(ResourceFactory.newClassPathResource(RULES_PATH + file.getFilename(), "UTF-8"));
@@ -58,7 +58,7 @@ public class DroolConfig {
 
     @Bean
     @ConditionalOnMissingBean(KieContainer.class)
-    private KieContainer getKieContainer() throws IOException {
+    public KieContainer getKieContainer() throws IOException {
         LOGGER.info("Container created...");
         getKieRepository();
         //KieBuilder kb = getKieServices().newKieBuilder(getKieFileSystem());
