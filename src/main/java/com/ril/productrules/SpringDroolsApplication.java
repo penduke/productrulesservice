@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 import static springfox.documentation.builders.PathSelectors.any;
 
-import static com.ril.productrules.SpringDroolsApplication.BrandsFromFile.importBrands;
+//import static com.ril.productrules.SpringDroolsApplication.BrandsFromFile.importBrands;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.PropertyAccessor;
@@ -32,8 +32,8 @@ import org.springframework.boot.CommandLineRunner;
 
 @SpringBootApplication
 @EnableSwagger2
-public class SpringDroolsApplication //{
-    implements CommandLineRunner {
+public class SpringDroolsApplication {
+    //implements CommandLineRunner {
 
     @Autowired
     private BrandRepository brandRepository;
@@ -59,20 +59,20 @@ public class SpringDroolsApplication //{
      * @param strings nothing as input
      * @throws Exception if problem occurs.
      */
-    public void run(String... strings) throws Exception {
+    /*public void run(String... strings) throws Exception {
         //Create the default brands
         //Persist the Brands to the database
         importBrands().forEach(t-> brandRepository.save(new Brand(
-                new BrandPK(t.name, CommercialType.findByLabel(t.commericalType)))));
+                t.name, CommercialType.findByLabel(t.commericalType))));
         System.out.println("Number of brands =" + brandRepository.count());
-    }
+    }*/
 
     /**
      * Helper class to import the records in the ExploreCalifornia.json
      */
-    static class BrandsFromFile {
+    //static class BrandsFromFile {
         //attributes as listed in the .json file
-        private String name, commericalType;
+        //private String name, commericalType;
 
         /**
          * Open the ExploreCalifornia.json, unmarshal every entry into a TourFromFile Object.
@@ -80,13 +80,13 @@ public class SpringDroolsApplication //{
          * @return a List of TourFromFile objects.
          * @throws IOException if ObjectMapper unable to open file.
          */
-        static List<BrandsFromFile> importBrands() throws IOException {
+        /*static List<BrandsFromFile> importBrands() throws IOException {
             return new ObjectMapper().
                     setVisibility(PropertyAccessor.FIELD, JsonAutoDetect.Visibility.ANY).
                     readValue(BrandsFromFile.class.
                             getResourceAsStream("/Brands.json"),
                             new TypeReference<List<BrandsFromFile>>(){});
         }
-    }
+    }*/
 
 }

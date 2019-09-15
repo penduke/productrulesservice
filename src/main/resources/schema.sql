@@ -1,0 +1,5 @@
+CREATE TABLE brand(
+  id BIGINT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(50) NOT NULL,
+  commercial_type CHAR(10) NOT NULL
+);

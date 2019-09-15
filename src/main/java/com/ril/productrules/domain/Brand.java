@@ -17,8 +17,6 @@ public class Brand implements Serializable {
 
     // -----//
 
-    /*
-
     public Integer getId() {
         return id;
     }
@@ -48,14 +46,19 @@ public class Brand implements Serializable {
         return Objects.equals(id, brand.id) &&
                 Objects.equals(name, brand.name) &&
                 commercialType == brand.commercialType;
-    }*/
+    }
+
+    public Brand(String name, CommercialType commercialType) {
+        this.name = name;
+        this.commercialType = commercialType;
+    }
 
     // -----//
 
 
     // -----//
 
-    @EmbeddedId
+    /*@EmbeddedId
     private BrandPK pk;
 
     public Brand(BrandPK pk) {
@@ -97,7 +100,7 @@ public class Brand implements Serializable {
     public Brand(String name, CommercialType commercialType) {
         this.name = name;
         this.commercialType = commercialType;
-    }
+    }*/
 
     // -----//
 

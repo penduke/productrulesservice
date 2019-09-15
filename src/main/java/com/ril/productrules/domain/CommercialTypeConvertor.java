@@ -4,7 +4,7 @@ import javax.persistence.AttributeConverter;
 import javax.persistence.Converter;
 
 
-//@Converter(autoApply = true)
+@Converter(autoApply = true)
 public class CommercialTypeConvertor implements AttributeConverter<CommercialType, String> {
     @Override
     public String convertToDatabaseColumn(CommercialType commercialType) {
