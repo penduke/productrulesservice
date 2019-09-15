@@ -1,0 +1,38 @@
+package KieRule;
+import com.ril.productrules.domain.ProductRulesObject;
+
+rule "JIT-DEFAULT"
+when
+productRulesObject : ProductRulesObject(productRulesObject.getProductDTO().commercialType=="JIT");
+
+then
+productRulesObject.getProductDTO().setDroppableAtStore(0);
+productRulesObject.getProductDTO().setPickableAtStore(0);
+end;
+
+rule "OR-DEFAULT"
+when
+productRulesObject : ProductRulesObject(productRulesObject.getProductDTO().commercialType=="OR");
+
+then
+productRulesObject.getProductDTO().setDroppableAtStore(1);
+productRulesObject.getProductDTO().setPickableAtStore(1);
+end;
+
+rule "JIT-INCLUDE"
+when
+productRulesObject : ProductRulesObject(productRulesObject.getProductDTO().commercialType=="JIT" && brands contains productRulesObject.getProductDTO().brandName);
+
+then
+productRulesObject.getProductDTO().setDroppableAtStore(1);
+productRulesObject.getProductDTO().setPickableAtStore(1);
+end;
+
+rule "OR-EXCLUDE"
+when
+productRulesObject : ProductRulesObject(productRulesObject.getProductDTO().commercialType=="OR" && brands contains productRulesObject.getProductDTO().brandName);
+
+then
+productRulesObject.getProductDTO().setDroppableAtStore(0);
+productRulesObject.getProductDTO().setPickableAtStore(0);
+end;
